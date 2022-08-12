@@ -7,6 +7,7 @@ const Enigme = ({ enigme, nextRoute }) => {
   const [inputClassName, setInputClassName] = useState("");
   const [buttonClassName, setButtonClassName] = useState("");
   const [indication, setIndication] = useState("");
+  const navigate = useNavigate();
 
   // COMPORTEMENTS
   const updateUserAnswer = (event) => {
@@ -24,8 +25,6 @@ const Enigme = ({ enigme, nextRoute }) => {
       const actualLevel = window.location.href.charAt(
         window.location.href.length - 1
       );
-
-      const navigate = useNavigate();
 
       setInputClassName("good-answer");
       setButtonClassName("good-answer");
