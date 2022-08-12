@@ -5,7 +5,7 @@ import Level2 from "./pages/Level2";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/enigme">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/level-1" element={<Level1 />} />
