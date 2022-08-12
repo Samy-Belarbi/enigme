@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Enigme = ({ enigme, nextRoute }) => {
   // STATE
@@ -24,6 +25,8 @@ const Enigme = ({ enigme, nextRoute }) => {
         window.location.href.length - 1
       );
 
+      const navigate = useNavigate();
+
       setInputClassName("good-answer");
       setButtonClassName("good-answer");
 
@@ -36,8 +39,7 @@ const Enigme = ({ enigme, nextRoute }) => {
 
       setTimeout(() => {
         clearInterval(intervalId);
-        window.location.href =
-        window.location.href.slice(0, -1) + (parseInt(actualLevel) + 1);
+        navigate(`/level-${(parseInt(actualLevel) + 1)}`);
       }, 5000);
       
       return;
