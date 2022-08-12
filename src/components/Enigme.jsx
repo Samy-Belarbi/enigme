@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Enigme = ({ enigme, nextRoute }) => {
+const Enigme = ({ enigme }) => {
   // STATE
   const [userAnswer, setUserAnswer] = useState("");
   const [inputClassName, setInputClassName] = useState("");
   const [buttonClassName, setButtonClassName] = useState("");
   const [indication, setIndication] = useState("");
+  const [redirection, setRedirection] = useState("");
   const navigate = useNavigate();
 
   // COMPORTEMENTS
   const updateUserAnswer = (event) => {
     setUserAnswer(event.target.value);
+    setInputClassName("");
   };
 
   const checkAnswer = (event) => {
@@ -29,11 +31,12 @@ const Enigme = ({ enigme, nextRoute }) => {
       setInputClassName("good-answer");
       setButtonClassName("good-answer");
 
-      setIndication(`Bonne réponse ! Vous allez être redirigé dans : ${counter} secondes.`);
+      setIndication(`Bonne réponse ! Et oui, c'était « ${enigme.answer} ».`);
+      setRedirection(`Vous allez être redirigé dans : ${counter} secondes.`)
 
       const intervalId = setInterval(() => {
         counter = counter - 1;
-        setIndication(`Bonne réponse ! Vous allez être redirigé dans : ${counter} secondes.`);
+        setRedirection(`Vous allez être redirigé dans : ${counter} secondes.`)
         }, 1000);
 
       setTimeout(() => {
@@ -48,7 +51,6 @@ const Enigme = ({ enigme, nextRoute }) => {
     else if (enigme.answer.toLowerCase().includes(userAnswer.toLowerCase()) && userAnswer.length > 1) {
       setIndication("Presque... !!!");
       setInputClassName("close-answer");
-      removeClassName();
       return;
     } 
     
@@ -56,21 +58,24 @@ const Enigme = ({ enigme, nextRoute }) => {
     else {
       setIndication("Mauvaise réponse...");
       setInputClassName("wrong-answer");
-      removeClassName();
     }
   };
 
   const removeClassName = () => {
-    setTimeout(() => {
       setInputClassName("");
-    }, 5000);
   };
 
   const showIndication = () => {
     if (indication) {
-      return <p>{indication}</p>;
+      return <p className="indication">{indication}</p>;
     }
   };
+  
+  const showRedirection = () => {
+    if (redirection) {
+      return <p className="redirection">{redirection}</p>
+    }
+  }
 
   return (
     <div className="enigme">
@@ -85,10 +90,13 @@ const Enigme = ({ enigme, nextRoute }) => {
           className={inputClassName}
           type="text"
           onChange={updateUserAnswer}
+          onAnimationEnd={removeClassName}
           value={userAnswer}
           placeholder="Votre réponse..."
+          spellCheck="false"
         />
         {showIndication()}
+        {showRedirection()}
         <button className={buttonClassName}>Valider</button>
       </form>
     </div>
