@@ -7,7 +7,7 @@ const App = () => {
   return (
     <BrowserRouter basename="/enigme">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/enigme" element={<Home />} />
         <Route path="/level-1" element={<Level1 />} />
         <Route path="/level-2" element={<Level2 />} />
         <Route path="*" element={<Home />} />
