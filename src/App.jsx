@@ -7,10 +7,10 @@ const App = () => {
   return (
     <BrowserRouter basename="/enigme">
       <Routes>
-        <Route path="/enigme" exact element={<Home />} />
-        <Route path="/enigme/level-1" exact element={<Level1 />} />
-        <Route path="/enigme/level-2" exact element={<Level2 />} />
-        <Route path="/enigme/*" exact element={<Home />} />
+        <Route path="/" exact element={<Home />} />
+        <Route path="level-1" exact element={<Level1 />} />
+        <Route path="level-2" exact element={<Level2 />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
