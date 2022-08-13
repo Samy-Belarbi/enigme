@@ -2,12 +2,12 @@ import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="enigme-container">
-          <div className="start">
-          <NavLink to="/level-1">
-            Démarrer
-          </NavLink>
-          </div>
+    <div className="start-container">
+      <div className="start">
+        <NavLink to="/level-1">?</NavLink>
+      </div>
+
+      <div className="bg"></div>
     </div>
   );
 };

@@ -20,8 +20,10 @@ const Enigme = ({ enigme }) => {
     event.preventDefault();
 
     // BONNE REPONSE
-    if (enigme.answer.toLowerCase() == userAnswer.toLowerCase()) {
-
+    if (
+      userAnswer.toLowerCase().includes(enigme.answer.toLowerCase()) &&
+      userAnswer.length < enigme.answer.length + 5
+    ) {
       let counter = 5;
 
       const actualLevel = window.location.href.charAt(
@@ -32,28 +34,31 @@ const Enigme = ({ enigme }) => {
       setButtonClassName("good-answer");
 
       setIndication(`Bonne réponse ! Et oui, c'était « ${enigme.answer} ».`);
-      setRedirection(`Vous allez être redirigé dans : ${counter} secondes.`)
+      setRedirection(`Vous allez être redirigé dans : ${counter} secondes.`);
 
       const intervalId = setInterval(() => {
         counter = counter - 1;
-        setRedirection(`Vous allez être redirigé dans : ${counter} secondes.`)
-        }, 1000);
+        setRedirection(`Vous allez être redirigé dans : ${counter} secondes.`);
+      }, 1000);
 
       setTimeout(() => {
         clearInterval(intervalId);
-        navigate(`/level-${(parseInt(actualLevel) + 1)}`);
+        navigate(`/level-${parseInt(actualLevel) + 1}`);
       }, 5000);
-      
+
       return;
-    } 
-    
+    }
+
     // REPONSE CLOSE
-    else if (enigme.answer.toLowerCase().includes(userAnswer.toLowerCase()) && userAnswer.length > 1) {
+    else if (
+      userAnswer.toLowerCase().includes(enigme.answer.toLowerCase()) &&
+      userAnswer.length >= enigme.answer.length + 5
+    ) {
       setIndication("Presque... !!!");
       setInputClassName("close-answer");
       return;
-    } 
-    
+    }
+
     // MAUVAISE REPONSE
     else {
       setIndication("Mauvaise réponse...");
@@ -62,7 +67,7 @@ const Enigme = ({ enigme }) => {
   };
 
   const removeClassName = () => {
-      setInputClassName("");
+    setInputClassName("");
   };
 
   const showIndication = () => {
@@ -70,20 +75,18 @@ const Enigme = ({ enigme }) => {
       return <p className="indication">{indication}</p>;
     }
   };
-  
+
   const showRedirection = () => {
     if (redirection) {
-      return <p className="redirection">{redirection}</p>
+      return <p className="redirection">{redirection}</p>;
     }
-  }
+  };
 
   return (
     <div className="enigme">
       <h2 className="title">{enigme.title}</h2>
 
-      <p className="statement">
-        {enigme.statement}
-      </p>
+      <p className="statement">{enigme.statement}</p>
 
       <form action="" onSubmit={checkAnswer}>
         <input
