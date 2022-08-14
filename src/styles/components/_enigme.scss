@@ -5,7 +5,7 @@
     max-width: 80%;
     width: fit-content;
     min-width: 70%;
-    height: fit-content;
+    height: 80%;
     padding: 1em 0em;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
@@ -40,18 +40,6 @@
         @keyframes blinker {
             50% {
                 opacity: 0;
-            }
-        }
-
-        animation: moving 15s linear infinite;
-
-        @keyframes moving {
-            0% {
-                transform: translateX(1000px);
-            }
-
-            100% {
-                transform: translateX(-1000px);
             }
         }
     }
@@ -207,6 +195,20 @@
 
         &.active {
             color: var(--enigmaYellow);
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .enigme {
+        .statement {
+            font-size: 2em;
+        }
+
+        form {
+            input {
+                font-size: 2em;
+            }
         }
     }
 }
