@@ -5,10 +5,17 @@
 * {
     margin: 0;
     font-family: "Helvetica", sans-serif;
+    box-sizing: content-box;
+}
+
+:root {
+    --enigmaPurple: #ebc8f9;
+    --enigmaGreen: #3f5d63;
+    --enigmaYellow: #d0ff16;
 }
 
 body {
-    background-color: #212121;
+    background-color: var(--enigmaGreen);
 }
 
 #root {
@@ -17,8 +24,8 @@ body {
 }
 
 ::selection {
-    background-color: white;
-    color: grayscale($color: #212121);
+    background-color: transparent;
+    color: white;
 }
 
 .bg {

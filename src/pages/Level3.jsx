@@ -5,10 +5,11 @@ import { useState } from "react";
 const Level1 = () => {
   // STATE
   const [enigme, setEnigme] = useState({
-    title: "2",
-    statement: "Quelle lettre peut-on lancer dans tous les sens ?",
-    answer: "D",
-    indice: "Indispensable pour certains jeux de plateau...",
+    title: "3",
+    statement:
+      "Quand je mange, je grandis et quand je bois, je meurs. Qui suis-je ?",
+    answer: "feu",
+    indice: "Il peut être de coup, de bois ou follet.",
   });
 
   return (

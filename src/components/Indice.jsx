@@ -4,14 +4,17 @@ const Indice = ({ indice }) => {
   const [actualIndice, setActualIndice] = useState("");
   const [indiceClass, setIndiceClass] = useState("");
   const [indiceDisplayed, setIndiceDisplayed] = useState(false);
+  const [buttonClass, setButtonClass] = useState("");
 
   const displayIndice = () => {
     if (!indiceDisplayed) {
       setActualIndice(indice);
       setIndiceClass("active");
+      setButtonClass("active");
       setIndiceDisplayed(true);
     } else {
       setActualIndice("");
+      setButtonClass("");
       setIndiceClass("");
       setIndiceDisplayed(false);
     }
@@ -20,7 +23,9 @@ const Indice = ({ indice }) => {
   return (
     <div className="indice">
       <p className={indiceClass}>{actualIndice}</p>
-      <span onClick={displayIndice}>?</span>
+      <span className={buttonClass} onClick={displayIndice}>
+        ?
+      </span>
     </div>
   );
 };

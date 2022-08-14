@@ -5,7 +5,7 @@ import Indice from "../components/Indice";
 const Level1 = () => {
   // STATE
   const [enigme, setEnigme] = useState({
-    title: "Niveau 1",
+    title: "1",
     statement: "Quelle est la lettre la plus tranchante ?",
     answer: "H",
     indice:

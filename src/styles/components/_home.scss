@@ -23,22 +23,17 @@
 
         a {
             font-size: 20em;
-            color: white;
+            color: var(--enigmaPurple);
             text-decoration: none;
             transition: all 0.3s ease-in-out;
 
             &:visited {
-                color: white;
+                color: var(--enigmaPurple);
             }
 
             &:hover {
-                color: violet;
+                color: #e29afe;
             }
-        }
-
-        p {
-            position: absolute;
-            top: 0;
         }
     }
 }

@@ -1,5 +1,10 @@
-import { useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Hooks à utiiser : useState, useContext, useTransition
+
+// Hooks à éviter 98% du temps : useEffect, useRef
+// Hooks à éviter à 75% du temps : useMemo, useCallback
 
 const Enigme = ({ enigme }) => {
   // STATE
@@ -7,13 +12,13 @@ const Enigme = ({ enigme }) => {
   const [inputClassName, setInputClassName] = useState("");
   const [buttonClassName, setButtonClassName] = useState("");
   const [indication, setIndication] = useState("");
+  const [indicationClassName, setIndicationClassName] = useState("indication");
   const [redirection, setRedirection] = useState("");
   const navigate = useNavigate();
 
   // COMPORTEMENTS
   const updateUserAnswer = (event) => {
     setUserAnswer(event.target.value);
-    setInputClassName("");
   };
 
   const checkAnswer = (event) => {
@@ -54,14 +59,14 @@ const Enigme = ({ enigme }) => {
       userAnswer.toLowerCase().includes(enigme.answer.toLowerCase()) &&
       userAnswer.length >= enigme.answer.length + 5
     ) {
-      setIndication("Presque... !!!");
+      setIndication("Pas loin !");
       setInputClassName("close-answer");
       return;
     }
 
     // MAUVAISE REPONSE
     else {
-      setIndication("Mauvaise réponse...");
+      setIndication("Mauvaise réponse.");
       setInputClassName("wrong-answer");
     }
   };
@@ -72,7 +77,7 @@ const Enigme = ({ enigme }) => {
 
   const showIndication = () => {
     if (indication) {
-      return <p className="indication">{indication}</p>;
+      return <p className={indicationClassName}>{indication}</p>;
     }
   };
 
@@ -81,6 +86,13 @@ const Enigme = ({ enigme }) => {
       return <p className="redirection">{redirection}</p>;
     }
   };
+
+  // const resetIndicationClassName = () => {
+  //   setTimeout(() => {
+  //     setIndicationClassName("");
+  //     setIndication("");
+  //   }, 2500);
+  // };
 
   return (
     <div className="enigme">
@@ -98,6 +110,7 @@ const Enigme = ({ enigme }) => {
           placeholder="Votre réponse..."
           spellCheck="false"
         />
+
         {showIndication()}
         {showRedirection()}
         <button className={buttonClassName}>Valider</button>
