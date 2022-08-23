@@ -14,12 +14,15 @@
   --enigmaYellow: #d0ff16;
 }
 
-body {
-  background-color: var(--enigmaGreen);
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
 }
 
-#root {
-  width: 100%;
+body {
+  background-color: var(--enigmaGreen);
 }
 
 ::selection {
