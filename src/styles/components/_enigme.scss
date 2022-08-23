@@ -1,214 +1,213 @@
 @import "../mixins";
 
 .enigme {
-    color: var(--enigmaPurple);
-    max-width: 80%;
-    width: fit-content;
-    min-width: 70%;
-    height: 700px;
-    padding: 1em 0em;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
+  color: var(--enigmaPurple);
+  max-width: 80%;
+  width: fit-content;
+  min-width: 70%;
+  height: 700px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
 
+  @include dFlexColumnAlignJustCenter;
+  gap: 2em;
+
+  // ANIMATION APPARITION
+  animation: fade 0.5s;
+  @keyframes fade {
+    0% {
+      transform: translateX(-150px);
+      opacity: 0%;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 100%;
+    }
+  }
+
+  h2 {
+    position: absolute;
+    opacity: 0.1;
+    font-size: 35em;
+    text-align: center;
+    color: var(--enigmaPurple);
+    z-index: -2;
+
+    animation: blinker 5s linear infinite;
+
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    width: 100%;
+  }
+
+  .statement,
+  .redirection {
+    color: var(--enigmaPurple);
+    font-style: italic;
+  }
+
+  .statement {
+    font-size: 3.5em;
+  }
+
+  form {
     @include dFlexColumnAlignJustCenter;
     gap: 2em;
 
-    // ANIMATION APPARITION
-    animation: fade 0.5s;
-    @keyframes fade {
-        0% {
-            transform: translateX(-150px);
-            opacity: 0%;
+    input {
+      border: none;
+      color: white;
+      font-size: 3em;
+      background-color: transparent;
+      text-align: center;
+      padding: 0.2em 0.4em;
+      width: 80%;
+
+      transition: all 0.3s ease-in-out;
+
+      &::placeholder {
+        color: white;
+        opacity: 0.2;
+      }
+
+      &:focus {
+        outline: 0;
+        box-shadow: 0px 0px 0px 1px var(--enigmaPurple);
+        transform: scale(1.05);
+      }
+
+      &.wrong-answer {
+        box-shadow: 0px 0px 0px 2px red;
+      }
+
+      &.close-answer {
+        box-shadow: 0px 0px 0px 2px var(--enigmaYellow);
+      }
+
+      &.wrong-answer,
+      &.close-answer {
+        animation: shaking 1s;
+
+        @keyframes shaking {
+          0% {
+            transform: translateX(0);
+          }
+          15% {
+            transform: translateX(5px);
+          }
+          30% {
+            transform: translateX(-5px);
+          }
+          45% {
+            transform: translateX(5px);
+          }
+          60% {
+            transform: translateX(0);
+          }
         }
 
-        100% {
-            transform: translateX(0);
-            opacity: 100%;
+        &:focus {
+          transform: scale(1);
         }
+      }
+
+      &::selection {
+        color: var(--enigmaYellow);
+      }
     }
 
-    h2 {
-        position: absolute;
-        opacity: 0.1;
-        font-size: 40em;
-        text-align: center;
-        color: var(--enigmaPurple);
-        z-index: -2;
+    .indication {
+      color: white;
+      font-weight: 100;
+      font-size: 2em;
+    }
 
-        animation: blinker 5s linear infinite;
-
-        @keyframes blinker {
-            50% {
-                opacity: 0;
-            }
-        }
+    button {
+      display: none;
     }
 
     p {
-        text-align: center;
-        width: 100%;
+      width: 100%;
     }
 
-    .statement,
-    .redirection {
-        color: var(--enigmaPurple);
-        font-style: italic;
+    .good-answer {
+      display: none;
     }
-
-    .statement {
-        font-size: 3.5em;
-    }
-
-    form {
-        @include dFlexColumnAlignJustCenter;
-        gap: 2em;
-
-        input {
-            border: none;
-            color: white;
-            font-size: 3em;
-            background-color: transparent;
-            text-align: center;
-            padding: 0.2em 0.4em;
-            width: 80%;
-
-            transition: all 0.3s ease-in-out;
-
-            &::placeholder {
-                color: white;
-                opacity: 0.2;
-            }
-
-            &:focus {
-                outline: 0;
-                box-shadow: 0px 0px 0px 1px var(--enigmaPurple);
-                transform: scale(1.05);
-            }
-
-            &.wrong-answer {
-                box-shadow: 0px 0px 0px 2px red;
-            }
-
-            &.close-answer {
-                box-shadow: 0px 0px 0px 2px var(--enigmaYellow);
-            }
-
-            &.wrong-answer,
-            &.close-answer {
-                animation: shaking 1s;
-
-                @keyframes shaking {
-                    0% {
-                        transform: translateX(0);
-                    }
-                    15% {
-                        transform: translateX(5px);
-                    }
-                    30% {
-                        transform: translateX(-5px);
-                    }
-                    45% {
-                        transform: translateX(5px);
-                    }
-                    60% {
-                        transform: translateX(0);
-                    }
-                }
-
-                &:focus {
-                    transform: scale(1);
-                }
-            }
-
-            &::selection {
-                color: var(--enigmaYellow);
-            }
-        }
-
-        .indication {
-            color: white;
-            font-weight: 100;
-            font-size: 2em;
-        }
-
-        button {
-            display: none;
-        }
-
-        p {
-            width: 100%;
-        }
-
-        .good-answer {
-            display: none;
-        }
-    }
+  }
 }
 
 // INDICE
 .indice {
-    position: absolute;
-    bottom: 0.5em;
-    font-size: 3em;
-    color: white;
-    width: 80%;
-    gap: 20px;
+  position: absolute;
+  bottom: 0.5em;
+  font-size: 3em;
+  color: white;
+  width: 80%;
+  gap: 20px;
 
-    @include dFlexColumnAlignJustCenter;
+  @include dFlexColumnAlignJustCenter;
 
-    // Affichage de l'indice
-    p {
-        display: none;
-        font-style: italic;
-        font-size: 20px;
-        text-align: center;
+  // Affichage de l'indice
+  p {
+    display: none;
+    font-style: italic;
+    font-size: 20px;
+    text-align: center;
 
-        &.active {
-            display: flex;
-            background-color: black;
-            color: white;
-            padding: 0.2em 0.5em;
+    &.active {
+      display: flex;
+      background-color: black;
+      color: white;
+      padding: 0.2em 0.5em;
 
-            animation: apparition 1s;
+      animation: apparition 1s;
 
-            @keyframes apparition {
-                0% {
-                    opacity: 0;
-                }
-
-                60% {
-                    opacity: 0.8;
-                }
-
-                100% {
-                    opacity: 1;
-                }
-            }
+      @keyframes apparition {
+        0% {
+          opacity: 0;
         }
-    }
 
-    // Le ? pour faire apparaitre l'indice
-    span {
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        position: relative;
-
-        &.active {
-            color: var(--enigmaYellow);
+        60% {
+          opacity: 0.8;
         }
+
+        100% {
+          opacity: 1;
+        }
+      }
     }
+  }
+
+  // Le ? pour faire apparaitre l'indice
+  span {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+
+    &.active {
+      color: var(--enigmaYellow);
+    }
+  }
 }
 
 @media screen and (max-width: 500px) {
-    .enigme {
-        .statement {
-            font-size: 2em;
-        }
-
-        form {
-            input {
-                font-size: 2em;
-            }
-        }
+  .enigme {
+    .statement {
+      font-size: 2em;
     }
+
+    form {
+      input {
+        font-size: 2em;
+      }
+    }
+  }
 }
