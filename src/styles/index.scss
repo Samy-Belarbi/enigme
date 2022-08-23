@@ -3,78 +3,80 @@
 @import "./components/home";
 
 * {
-    margin: 0;
-    font-family: "Helvetica", sans-serif;
-    box-sizing: content-box;
+  margin: 0;
+  font-family: "Helvetica", sans-serif;
+  box-sizing: content-box;
 }
 
 :root {
-    --enigmaPurple: #ebc8f9;
-    --enigmaGreen: #3f5d63;
-    --enigmaYellow: #d0ff16;
+  --enigmaPurple: #ebc8f9;
+  --enigmaGreen: #3f5d63;
+  --enigmaYellow: #d0ff16;
 }
 
 body {
-    background-color: var(--enigmaGreen);
+  background-color: var(--enigmaGreen);
 }
 
 #root {
-    width: 100%;
+  width: 100%;
 }
 
 ::selection {
-    background-color: transparent;
-    color: white;
+  background-color: transparent;
+  color: white;
 }
 
 .bg {
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    right: -50%;
-    bottom: -50%;
-    width: 200%;
-    height: 200%;
-    background: transparent url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
-    background-repeat: repeat;
-    animation: bg-animation 0.2s infinite;
-    opacity: 0.9;
-    visibility: visible;
-    z-index: -5;
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  width: 200%;
+  height: 200%;
+  background: transparent
+    url("http://assets.iceable.com/img/noise-transparent.png") repeat 0 0;
+  background-repeat: repeat;
+  animation: bg-animation 0.2s infinite;
+  opacity: 0.9;
+  visibility: visible;
+  z-index: -5;
 
-    @keyframes bg-animation {
-        0% {
-            transform: translate(0, 0);
-        }
-        10% {
-            transform: translate(-5%, -5%);
-        }
-        20% {
-            transform: translate(-10%, 5%);
-        }
-        30% {
-            transform: translate(5%, -10%);
-        }
-        40% {
-            transform: translate(-5%, 15%);
-        }
-        50% {
-            transform: translate(-10%, 5%);
-        }
-        60% {
-            transform: translate(15%, 0);
-        }
-        70% {
-            transform: translate(0, 10%);
-        }
-        80% {
-            transform: translate(-15%, 0);
-        }
-        90% {
-            transform: translate(10%, 5%);
-        }
-        100% {
-            transform: translate(5%, 0);
-        }
+  @keyframes bg-animation {
+    0% {
+      transform: translate(0, 0);
     }
+    10% {
+      transform: translate(-5%, -5%);
+    }
+    20% {
+      transform: translate(-10%, 5%);
+    }
+    30% {
+      transform: translate(5%, -10%);
+    }
+    40% {
+      transform: translate(-5%, 15%);
+    }
+    50% {
+      transform: translate(-10%, 5%);
+    }
+    60% {
+      transform: translate(15%, 0);
+    }
+    70% {
+      transform: translate(0, 10%);
+    }
+    80% {
+      transform: translate(-15%, 0);
+    }
+    90% {
+      transform: translate(10%, 5%);
+    }
+    100% {
+      transform: translate(5%, 0);
+    }
+  }
 }
