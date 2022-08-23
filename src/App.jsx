@@ -6,7 +6,7 @@ import Level3 from "./pages/Level3";
 
 const App = () => {
   return (
-    <BrowserRouter basename="/enigme">
+    <BrowserRouter>
       <Routes>
         <Route path="/" exact element={<Home />} />
         <Route path="level-1" exact element={<Level1 />} />
