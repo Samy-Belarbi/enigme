@@ -2,7 +2,7 @@ import Enigme from "../components/Enigme";
 import Indice from "../components/Indice";
 import { useState } from "react";
 
-const Level1 = () => {
+const Level2 = () => {
   // STATE
   const [enigme, setEnigme] = useState({
     title: "2",
@@ -20,4 +20,4 @@ const Level1 = () => {
   );
 };
 
-export default Level1;
+export default Level2;

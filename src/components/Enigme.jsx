@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Hooks à utiiser : useState, useContext, useTransition
+// Hooks à utiiser : useState, useContext, useTransition, useEffect
 
-// Hooks à éviter 98% du temps : useEffect, useRef
+// Hooks à éviter 98% du temps : useRef
 // Hooks à éviter à 75% du temps : useMemo, useCallback
 
 const Enigme = ({ enigme }) => {
